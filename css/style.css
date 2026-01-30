@@ -1,0 +1,870 @@
+/* Estilos generales */
+body {
+    margin: 0; /* se quita el margin para evitar cortes con el header */
+    font-family: neue-haas-grotesk-display, sans-serif;
+    font-weight: 400;
+    background-color: #e2e2e2;
+    min-height: 100vh; /* asegura que cubra toda la pantalla */
+    cursor: none;
+}
+
+.custom-cursor {
+  width: 14px;
+  height: 14px;
+  background: white; /* blanco para que haga diferencia bien */
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+header { /* Header y Nav */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #e2e2e2;
+    height: 70px; 
+}
+
+nav {
+    display: flex;                  /* activa flexbox */
+    justify-content: space-between; /* separa logo y menú */
+    align-items: center;            /* centra verticalmente */
+    padding: 0.4rem 1rem;
+}
+
+
+nav img {              /* Logotipo */
+    width: 80px;       /* ancho fijo */
+    height: auto;      /* mantiene proporción */
+    margin: 5px;       /* margen en todos los lados */
+}
+
+
+.menu {         /* Menú horizontal */
+    list-style: none;
+    display: flex !important;    /* mantiene los links en línea */
+    gap: 20px;          /* separación entre links */
+    margin: 0;
+    padding: 0;
+}
+
+.menu a {
+    color: #ff4633;
+    padding: 5px 10px;
+    text-decoration: none; /* elimina el underline por defecto */
+    font-weight: 400;      /* peso normal */
+    transition: all 0.3s;  /* transición suave para hover */
+}
+
+.menu li:first-child { margin-left: 0;}   /* quita margen del primer item */
+
+.menu a:hover {text-decoration: underline;}
+/* Página activa */
+.menu a.active {font-weight: 600;       /* bold medio */}
+.sub-header-text {
+    text-align: left;        /* alineado a la izquierda */
+    color: #ff4633;               /* color del texto */
+    font-size: 2rem;         /* tamaño del texto */
+    font-weight: 600;
+    padding-top: 40px;
+    margin-left: 20px;
+  }
+
+  /* Desarrollo de la HOME */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* 3 columnas: izquierda - imagen - derecha */
+    align-items: center;                 /* alinea todo verticalmente */
+    padding-top: 10px;                  /* distancia desde el menú */
+}
+
+.hero img { max-width: 50%; max-height: 50%; justify-self: center; }
+.hero-text { color: #ff4633; font-size: 1rem; font-weight: 500; }
+.hero-text.left { text-align: left; justify-self: start; margin-left: 10px; }
+.hero-text.right { text-align: right; justify-self: end; margin-right: 10px; }
+
+/* Botón galeria */
+.gallery-btn {
+    display: inline-flex;         /* alinear flecha y texto */
+    align-items: center;
+    background: none;             /* sin fondo */
+    border: none;                 /* sin borde */
+    color: #ff4633;
+    font-size: 3rem;
+    font-weight: 600;
+    padding: 10px 10px;
+    margin-top: 170px;
+    text-decoration: none;        /* quita el subrayado */
+}
+
+/* Flecha dentro del botón */
+.gallery-btn .arrow { font-size: 3rem; transform: rotate(45deg); }
+.gallery-btn:hover { color: #4200f7; }
+
+.gallery-btn .assets {
+  font-family: "kepler-std-semicondensed", serif;
+  font-style: italic;
+  font-weight: normal;
+}
+
+.three-columns {
+    display: flex;                  /* coloca las columnas en fila */
+    justify-content: space-between; /* separa uniformemente */
+    margin: 90px 20px;              /* separación desde los bordes */
+    gap: 20px;                      /* espacio entre columnas */
+}
+
+.column {
+    flex: 1;                        /* cada columna ocupa el mismo ancho */
+    display: flex;                   /* activa flexbox para la columna */
+    flex-direction: column;          /* organiza línea, texto e imagen en vertical */
+}
+
+.column .line { height: 2px; background-color: #ff4633; }
+.column-text { flex: 1; font-size: 1.2rem; font-weight: 600; color: #ff4633; text-align: justify; margin-bottom: 10px; }
+.column img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+
+/* Rectángulo info FILOSOFÍA */
+.highlight-block {
+    display: flex;               /* organiza cuadro y foto en fila */
+    align-items: stretch;    /* hace que el cuadro y la imagen tengan la misma altura */
+    margin: 150px 10px;           /* separación desde los bordes */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.highlight-block.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.highlight-text {
+    background-color: #4200f7;   /* color de fondo */
+    color: #e2e2e2;                 /* texto claro sobre el fondo */
+    padding: 15px;               /* espacio interno del cuadro */
+    display: flex;
+    flex-direction: column;      /* textos apilados verticalmente */
+    justify-content: flex-start;      /* alineado al inicio */
+    flex: 1;                     /* que ocupe espacio disponible */
+}
+
+.highlight-text .title { font-size: 2rem; font-weight: 600; }
+.highlight-text .subtitle { font-size: 1.6rem; font-weight: 400; margin-bottom: 10px; margin-top: 40px; }
+.highlight-text .description { font-size: 1.2rem; font-weight: 300; line-height: 1.2; margin-top: 300px;}
+.highlight-image { flex: 1; }
+.highlight-image img { max-width: 100%; height: auto; display: block; }
+
+/* sección noticias */
+.home-news {
+  width: 100%;              /* toda la pantalla */
+  padding: 0 2rem;
+  box-sizing: border-box;
+  margin-bottom: 4rem; /* espacio debajo de la sección antes del footer */
+}
+
+.news-title {
+  font-size: 5rem;
+  font-weight: normal;
+  color: #ff4633;
+}
+
+.news-title .highlight {   /* para cambiar la tipografía de una palabra en concreto */
+  font-family: "kepler-std-semicondensed", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #ff4633;
+}
+
+.news-subtitle {
+  font-family: "kepler-std-semicondensed", serif;
+  font-style: italic;
+  font-size: 25px;
+  text-align: right;
+  margin-bottom: 120px;
+  color: #ff4633;
+}
+
+.news-grid {    /* Grid de noticias */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 4 columnas responsivas */
+  gap: 1rem;
+  margin: 20px 0;
+}
+
+.news-card {    /* Cada tarjeta de noticia */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.news-card h3 {    /* Título de la noticia */
+  margin: 0 0 0.5rem 0;
+  font-size: 20px;
+  font-weight: normal;
+  color: #ff4633;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+}
+
+.news-card h3::after {     /* Flecha al lado del título */
+  content: "→";
+  opacity: 0;
+  margin-left: 5px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  transform: rotate(0deg);
+}
+
+.news-card h3:hover {
+  text-decoration: underline;
+}
+
+.news-card h3:hover::after {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
+.news-card img {     /* Imagen de la noticia */
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+#full-news-container {     /* Contenedor del bloque completo de la noticia */
+  background-color: #f7f7f7;
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 2rem;
+  display: none; /* oculto al inicio */
+  transition: padding 0.3s ease;
+  color: #ff4633;
+}
+
+#full-news-container.show {
+  display: block;
+  padding: 2rem 1.5rem;
+}
+
+#full-news-container h4 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem 0;
+  font-family: "kepler-std-semicondensed", serif;
+  font-style: italic;
+  font-weight: normal;
+}
+
+#full-news-container p {margin-bottom: 1rem;}
+
+  /* ======================== Footer ======================== */
+footer {
+    background-color: #4200f7;
+    color: #ffffff;
+    padding: 40px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* se adapta a pantallas pequeñas */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-socials a {  /* Redes sociales */
+    margin-right: 15px;
+    display: inline-block;
+}
+
+.footer-socials img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s;
+}
+
+.footer-socials a:hover img {
+    transform: scale(1.2); /* efecto zoom al pasar el mouse */
+}
+
+.footer-address p { /* Dirección de la empresa */
+    margin: 5px 0;
+}
+
+.footer-address a {
+    color: #ffffff;
+}
+
+.footer-legal p, .footer-legal a {     /* Aviso legal */
+    margin: 5px 0;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-legal a:hover {text-decoration: underline;}
+.footer-logo { /* Footer logo */
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-logo img {
+    max-width: 1400px; 
+    height: auto;
+}
+
+/* PÁGINA PRESUPUESTO */
+.hero-idea {
+    text-align: center;
+    padding: 80px 20px 50px 20px;
+    position: relative; /* asegura que esté debajo del header */
+    z-index: 1; /* menor que el header, para que este quede encima */
+}
+
+.hero-idea h1 {
+    font-size: 9rem; /* grande, ocupa de esquina a esquina visualmente */
+    font-weight: 400;
+    margin: 0;
+    color: #4200f7;
+}
+
+.spacer {height: 60px;} /* margen amplio debajo del h1 */
+
+.hero-idea .subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #4200f7;
+    margin-top: 20px;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: #4200f7;
+    width: 100%; /* de esquina a esquina */
+    margin-bottom: 10px;
+}
+
+.hero-idea .info {
+    font-size: 1rem;
+    line-height: 1.2;
+    max-width: 800px; /* para que no sea demasiado ancho en desktop */
+    margin: 0 auto; /* centrado */
+    color: #4200f7;
+}
+
+/* ------------------------ FORMULARIO -----------------------------------*/
+.contact-section {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  max-width: 1200px; /* Limita el ancho general */
+  margin: 0 auto;
+  padding: 20px;
+  flex-wrap: wrap; /* Para que en pantallas pequeñas se ajusten */
+  align-items: flex-start; /* Alinea inicio de las columnas */
+}
+
+/* Columna izquierda: imagen */
+.contact-image {
+  flex: 0 0 30%; 
+  max-width: 864px; /* nunca más ancha que su tamaño original */
+}
+
+.contact-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+/* Columna derecha: formulario */
+.contact-form {
+  flex: 1 1 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 300px;
+  color: #4200f7;
+}
+
+/* Filas de nombre y apellidos */
+.name-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* Inputs generales */
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form input[type="email"],
+.contact-form input[type="number"],
+.contact-form input[readonly] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #4200f7;
+  box-sizing: border-box;
+}
+
+/* Si hay un error en el formato */
+.error {
+  color: #ff4633;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
+
+input.error-input {
+  border-color: #ff4633;
+}
+
+
+/* Fieldsets */
+.contact-form fieldset {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 20px; /* Separación consistente */
+}
+
+/* Legends */
+.contact-form legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+/* Labels dentro de fieldset */
+.contact-form fieldset label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Checkbox y radio dentro de label */
+.contact-form input[type="checkbox"],
+.contact-form input[type="radio"] {
+  margin-right: 8px;
+  accent-color: #4200f7;
+  width: 18px;
+  height: 18px;
+}
+
+/* Botones debajo de la política */
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Botones azules */
+.contact-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4200f7;
+  color: #f7f7f7;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.contact-form button:hover {
+  background-color: #ff4633;
+}
+
+/* Small texto de info de plazo */
+#plazo-info {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Footer asegura que siempre quede debajo */
+footer {
+  clear: both;
+  margin-top: 40px;
+}
+
+/* Para móviles */
+@media (max-width: 900px) {
+  .contact-section {
+      flex-direction: column;
+      align-items: center;
+  }
+  .contact-image,
+  .contact-form {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+  .name-row {
+      flex-direction: column;
+  }
+}
+
+/* ---------------------------PAGINA DE CONTACTO-------------------------------- */
+.contact-page {   /* Contenedor principal */
+    display: flex;
+    max-width: 1500px;
+    margin: 0 auto;
+    gap: 40px; /* más separación entre columnas */
+    padding: 40px 20px;
+}
+
+.fixed-image {    /* Contenedor de la imagen izquierda */
+    flex: 1;
+    position: sticky; /* permanece visible mientras haya espacio */
+    top: 20px;        /* distancia desde la parte superior */
+    align-self: start;
+    max-height: calc(100vh - 40px); /* no sobrepasa el viewport */
+}
+
+.fixed-image img {
+    width: 100%;
+    height: auto;
+}
+
+.contact-content {    /* Contenido desplazable a la derecha */
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* más separación entre secciones */
+    padding-bottom: 200px; /* espacio extra antes del footer */
+}
+
+.contact-content h1 {
+    font-size: 5rem;
+    color: #4200f7;
+    font-weight: 400;
+}
+
+.contact-content h2 {
+    font-size: 2rem;
+    color: #ff4633;
+    font-weight: 300;
+}
+
+.contact-content p {
+    font-size: 1rem;
+    color: #4200f7;
+    line-height: 2; /* mayor separación entre líneas */
+}
+
+/* Información de contacto - filas alineadas */
+.contact-info .data-row,
+.company-data .data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px; /* más separación entre filas */
+}
+
+.contact-info .data-row span,
+.company-data .data-row span {
+    font-size: 1rem;
+    color: #4200f7;
+}
+
+@media (max-width: 1024px) {     /* Responsive */
+    .contact-page {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .fixed-image {
+        position: relative;
+        max-height: none;
+    }
+    .contact-content {
+        padding-bottom: 100px;
+    }
+    .contact-info .data-row,
+    .company-data .data-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* MAPA */
+#map {
+  width: 100%;
+  height: 400px;
+  margin-top: 1em;
+  overflow: hidden;
+}
+
+/* Formulario de ruta */
+.map-form {
+  max-width: 600px;
+  margin-bottom: 1em;
+  display: flex;            
+  flex-wrap: wrap;          /* permite que el mensaje quede debajo */
+  gap: 0.5em;
+  align-items: flex-start;  
+  font-family: neue-haas-grotesk-display, sans-serif;
+}
+
+.map-form input {
+  flex: 1;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.map-form button {
+  padding: 0.5em 1em;
+  background: #4200f7;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.map-form button:hover {
+  background: #ff4633;
+}
+
+.map-message {
+  font-size: 0.85rem;
+  color: #ff4633;
+  margin-top: 0.3em;
+}
+
+/* Forzar fuente global en todo Leaflet */
+.leaflet-container,
+.leaflet-container *,
+.leaflet-popup-content,
+.leaflet-popup-content *,
+.leaflet-control,
+.leaflet-control * {
+  font-family: neue-haas-grotesk-display, sans-serif !important;
+}
+
+/* Popup */
+.leaflet-popup-content-wrapper {
+    background: #f7f7f7 !important; 
+    color: #4200f7 !important; 
+    padding: 12px 16px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    font-family: neue-haas-grotesk-display, sans-serif !important;
+}
+
+/* Flecha del popup */
+.leaflet-popup-tip {
+    background: #f7f7f7 !important;
+}
+
+/* Línea de la ruta */
+.leaflet-routing-container .leaflet-routing-line {
+    color: #4200f7 !important;
+    opacity: 0.9 !important;
+    border-radius: 5px !important;
+}
+
+/* Controles (zoom, rutas) */
+.leaflet-control,
+.leaflet-control * {
+  font-family: neue-haas-grotesk-display, sans-serif !important;
+}
+
+/* Panel de rutas de Leaflet Routing Machine */
+.leaflet-routing-container {
+  background: #f7f7f7; 
+  color: #4200f7;         
+  font-family: neue-haas-grotesk-display, sans-serif !important;
+  padding: 12px;
+  max-width: 400px;     /* ancho máximo */
+}
+
+/* Títulos dentro del panel */
+.leaflet-routing-container h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+/* Botones de la ruta */
+.leaflet-routing-container a.leaflet-routing-cancel,
+.leaflet-routing-container a.leaflet-routing-alt {
+  background: #4200f7;
+  color: #fff !important;
+  border-radius: 5px;
+  padding: 4px 8px;
+  text-decoration: none;
+  margin: 2px 0;
+  display: inline-block;
+  transition: background 0.3s;
+}
+
+.leaflet-routing-container a.leaflet-routing-cancel:hover,
+.leaflet-routing-container a.leaflet-routing-alt:hover {
+  background: #ff4633;
+}
+
+/* Listado de pasos de la ruta */
+.leaflet-routing-container .leaflet-routing-step {
+  font-size: 0.85rem;
+  color: #4200f7;
+  margin: 4px 0;
+}
+
+/* Input dentro del panel */
+.leaflet-routing-container input {
+  padding: 4px 6px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+/* PÁGINA GALERÍA */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.gallery-title {     /* Título separado del scroll */
+  text-align: center;
+  font-size: 22rem;
+  margin: 20px 0 20px; /* Ajusta 100px según altura de tu menú */
+  color: #4200f7;
+  font-weight: normal;
+}
+
+.gallery {     /* Contenedor de la galería */
+  display: flex;                          
+  overflow-x: auto;         
+  padding: 20px 20px 40px;  /* Padding top menor, título ya separa */
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  align-items: flex-start;  
+}
+
+.gallery::-webkit-scrollbar { height: 8px; }
+
+.gallery-item {
+  flex: 0 0 auto;
+  position: relative;
+  width: 300px;
+  height: 400px;
+  transition: width 0.4s ease, height 0.4s ease, transform 0.4s ease;
+  transform-origin: top center;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: inherit; /* hereda la transición del contenedor */
+}
+
+.gallery-item:hover {
+  width: 360px;  /* 20% más ancho */
+  height: 480px; /* 20% más alto */
+}
+
+.scroll-btn {    /* botones dentro de overlay */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #4200f7;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 0.5rem;
+  z-index: 20;
+  border-radius: 5px;
+}
+
+.scroll-btn.left { left: 30px; }
+.scroll-btn.right { right: 30px; }
+.scroll-btn:hover { background: #ff4633; }
+
+#lightbox-overlay {    /* Lightbox overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox-overlay.hidden { display: none; }
+
+#lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 3rem;
+  color: #ff4633;
+  background-color: transparent;
+  border: none;
+  user-select: none;
+}
+
+/* PÁGINA AVISO LEGAL */
+.aviso-legal-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
+.aviso-legal-page main {
+  padding: 70px 20px 80px;
+  flex: 0 0 auto;    
+}
+
+.aviso-legal-page main h1 {
+  font-size: 12rem;  
+  color: #ff4633;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.aviso-legal-page footer {
+  margin: 0;
+  padding: 40px 20px;   
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* Evita que el texto se parta en varias líneas */
+  border: 0;
+}
+
+

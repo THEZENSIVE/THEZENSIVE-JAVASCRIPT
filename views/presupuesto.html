@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="THE ZENSIVE">
+    <title>Presupuesto</title>
+    <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/jgk3gqt.css">
+    </head>
+<body>
+  <div class="custom-cursor"></div>
+  <script src="../js/main.js"></script>
+    <header>
+        <nav>
+                <a href="../index.html">
+                <img src="../images/thezensive-isotipo.png" alt="Logotipo The Zensive"
+                width="2436" height="1094">
+                </a>     
+          <ul class="menu">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="presupuesto.html" class="active">Presupuesto</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+      </header>
+      
+      <section class="hero-idea">
+        <h1>CUÉNTANOS TU IDEA</h1>
+        <div class="spacer"></div>
+        <p class="subtitle">[THE ZENSIVE] | DESIGNING WITH BOLD EDGE</p>
+        <hr class="divider">
+        <p class="info">
+            Tu idea ya tiene voz, nosotros le daremos forma. El diseño empieza cuando la visión se atreve a tomar espacio.
+        </p>
+    </section>
+    
+    <div class="contact-section">
+      <!-- Columna izquierda con imagen -->
+      <div class="contact-image">
+          <img src="../images/foto-presupuesto.jpg" alt="Diseño cartel en la playa" width="864" height="1152">
+      </div>
+  
+      <!-- Columna derecha: formulario -->
+      <form id="presupuesto-form" class="contact-form">
+          <!-- ===== DATOS DE CONTACTO ===== -->
+          <div class="name-row">
+              <label>
+                  <input type="text" name="nombre" placeholder="[Nombre]">
+                  <small class="error"></small>
+              </label>
+              <label>
+                  <input type="text" name="apellidos" placeholder="[Apellidos]">
+                  <small class="error"></small>
+              </label>
+          </div>
+  
+          <label>
+              <input type="tel" name="telefono" placeholder="[Teléfono]">
+              <small class="error"></small>
+          </label>
+          <label>
+              <input type="email" name="email" placeholder="[Email]">
+              <small class="error"></small>
+          </label>
+  
+          <!-- ===== PRODUCTO ===== -->
+          <fieldset>
+              <legend>Producto</legend>
+              <label>
+                  <input type="radio" name="producto" value="logo" data-price="400" checked>
+                  Paquete Olive: identidad visual y branding - 400€
+              </label>
+              <label>
+                  <input type="radio" name="producto" value="branding" data-price="500">
+                  Paquete Essence: *paquete olive + presentaciones - 500€
+              </label>
+              <label>
+                  <input type="radio" name="producto" value="packaging" data-price="700">
+                  Paquete Zensive: *paquete essence + diseño mensual rrss - 700€
+              </label>
+          </fieldset>
+  
+          <!-- ===== PLAZO ===== -->
+          <fieldset>
+              <legend>Plazo (meses)</legend>
+              <input type="number" name="plazo" id="plazo" value="3" min="1" max="12">
+              <small id="plazo-info">Plazo estándar: 6 meses</small>
+          </fieldset>
+  
+          <!-- ===== EXTRAS ===== -->
+          <fieldset>
+              <legend>Extras</legend>
+              <label>
+                  <input type="checkbox" class="extra" data-price="240">
+                  Diseño de menús para restaurantes, eventos u otros usos, con opciones de impresión o formato digital. - 240€
+              </label>
+              <label>
+                  <input type="checkbox" class="extra" data-price="270">
+                  Diseño de carteles para eventos, anuncios o decoración, adaptados a diferentes tamaños y formatos. - 270€
+              </label>
+              <label>
+                  <input type="checkbox" class="extra" data-price="150">
+                  Diseño de folletos de una o varias páginas, con contenido y gráficos personalizados. - 150€
+              </label>
+          </fieldset>
+  
+          <!-- ===== PRESUPUESTO FINAL ===== -->
+          <fieldset>
+              <legend>Presupuesto final</legend>
+              <input type="text" id="presupuesto-final" value="0 €" readonly>
+          </fieldset>
+  
+          <!-- ===== CONDICIONES Y ENVÍO ===== -->
+          <div class="field">
+            <label class="privacy">
+                <input type="checkbox" name="privacy">
+                Acepto la 
+                <a href="politica-privacidad.html" target="_blank">Política de privacidad</a>
+            </label>
+            <small class="error"></small>
+        </div>
+        
+  
+<!-- Mensaje general -->
+<div id="form-message" class="form-message"></div>
+
+<div class="form-buttons">
+    <button type="submit">Enviar</button>
+    <button type="reset">Resetear</button>
+</div>
+      </form>
+  </div>
+  
+        
+      <footer>
+        <div class="footer-container">
+          <!-- Redes sociales -->
+          <div class="footer-socials">
+            <a href="https://www.facebook.com" target="_blank">
+              <img src="../images/facebook.png" alt="Facebook @thezensive" width="885" height="885">
+            </a>
+            <a href="https://www.instagram.com/thezensive/" target="_blank">
+              <img src="../images/instagram.png" alt="Instagram @thezensive" width="885" height="885">
+            </a>
+            <a href="https://pin.it/61AoFFeXx" target="_blank">
+              <img src="../images/pinterest.png" alt="Pinterest @zayrasuarezz_" width="885" height="885">
+            </a>
+          </div>
+      
+          <!-- Dirección de la empresa -->
+          <div class="footer-address">
+            <p>THE ZENSIVE©</p>
+            <p>Calle Ejemplo 123, Las Palmas de Gran Canaria, España</p>
+            <p>Email: <a href="mailto:thezensive@gmail.com">thezensive@gmail.com</a></p>
+          </div>
+      
+          <!-- Aviso legal -->
+          <div class="footer-legal">
+            <p>&copy; 2026 THE ZENSIVE. Todos los derechos reservados.</p>
+            <a href="aviso-legal.html">Aviso legal</a>
+          </div>
+        </div>
+      
+        <!-- Logo en la parte baja -->
+        <div class="footer-logo">
+          <img src="../images/thezensive-logotipo.png" alt="Logotipo de The Zensive"
+          width="1668" height="181">
+        </div>
+      </footer>
+      <script src="../js/presupuesto.js"></script>
+
+  </body>
