@@ -1,0 +1,540 @@
+
+/* =====================================================
+   THE ZENSIVE — PROJECTS
+===================================================== */
+
+:root {
+    --color-grey:#ECE1D3;
+    --color-red:#742931;
+    --color-black:#391B21;
+    --color-yellow:#886D23;
+    --color-blue:#96ACBD;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+html,
+body {
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+}
+
+body {
+    background:var(--color-grey);
+    font-family:neue-haas-grotesk-display,sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   PROJECTS SCROLL
+===================================================== */
+
+.projects-scroll {
+    position:relative;
+    width:100%;
+    height:400vh;
+}
+
+.projects-sticky {
+    position:sticky;
+    top:20px;
+    width:calc(100% - 40px);
+    height:calc(100vh - 40px);
+    margin:0 auto;
+    overflow:hidden;
+    border-radius:16px;
+}
+
+.projects-track {
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+
+/* =====================================================
+   PROJECT
+===================================================== */
+
+.project {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    overflow:hidden;
+    will-change:transform;
+    border-radius:16px;
+}
+
+
+/* =====================================================
+   PROJECT STACK
+===================================================== */
+
+.project:nth-child(1) {
+    z-index:4;
+}
+
+.project:nth-child(2) {
+    z-index:3;
+}
+
+.project:nth-child(3) {
+    z-index:2;
+}
+
+.project:nth-child(4) {
+    z-index:1;
+}
+
+
+/* =====================================================
+   PROJECT LINK
+===================================================== */
+
+/*
+   IMPORTANTE:
+   El <a> debe estar DENTRO del .project.
+
+   Ejemplo:
+
+   <article class="project">
+       <a href="..." class="project-link"></a>
+       ...
+   </article>
+*/
+
+.project-link {
+    position:absolute;
+    inset:0;
+
+    display:block;
+
+    width:100%;
+    height:100%;
+
+    z-index:100;
+
+    color:inherit;
+    text-decoration:none;
+
+    cursor:pointer;
+    pointer-events:auto;
+}
+
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.project-image {
+    position:relative;
+    width:50%;
+    height:100%;
+    overflow:hidden;
+}
+
+.project-image img {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .8s ease;
+}
+
+.project:hover .project-image img {
+    transform:scale(1.03);
+}
+
+
+/* =====================================================
+   PROJECT INFO
+===================================================== */
+
+.project-info {
+    position:relative;
+    width:50%;
+    height:100%;
+    padding:40px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    gap:40px;
+}
+
+
+/* =====================================================
+   PROJECT COLOURS
+===================================================== */
+
+.project-info-red {
+    background:#DD4D36;
+    color:var(--color-grey);
+}
+
+.project-info-yellow {
+    background:var(--color-yellow);
+    color:var(--color-grey);
+}
+
+.project-info-blue {
+    background:var(--color-red);
+    color:var(--color-grey);
+}
+
+.project-info-black {
+    background:var(--color-black);
+    color:var(--color-grey);
+}
+
+
+/* =====================================================
+   PROJECT TEXT
+===================================================== */
+
+.project-number {
+    display:block;
+    font-size:14px;
+    line-height:1;
+}
+
+.project-info h2 {
+    margin-top:280px;
+    margin-bottom:80px;
+
+    font-size:clamp(60px,7vw,110px);
+    font-weight:300;
+    line-height:.82;
+    letter-spacing:-.055em;
+}
+
+.project-info p {
+    margin:0;
+
+    font-size:15px;
+    line-height:1.15;
+
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+}
+
+
+/* =========================================================
+   MENÚ FLOTANTE
+========================================================= */
+
+.floating-menu {
+    position:fixed;
+    left:50%;
+    bottom:40px;
+
+    transform:translateX(-50%);
+
+    width:490px;
+    height:40px;
+
+    z-index:5000;
+}
+
+
+/* =========================================================
+   CONTENEDOR MENÚ
+========================================================= */
+
+.floating-menu-track {
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    align-items:center;
+
+    background-color:var(--color-blue);
+
+    border-radius:10px;
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   OPCIONES MENÚ
+========================================================= */
+
+.floating-menu-item {
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:var(--color-grey);
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:200;
+
+    z-index:3;
+
+    transition:color .35s ease;
+}
+
+.floating-menu-item.active {
+    color:var(--color-blue);
+}
+
+
+/* =========================================================
+   PÍLDORA ACTIVA
+========================================================= */
+
+.floating-menu-active {
+    position:absolute;
+
+    top:50%;
+    left:18px;
+
+    width:26.666666%;
+    height:70%;
+
+    background-color:var(--color-grey);
+
+    border-radius:6px;
+
+    z-index:2;
+
+    pointer-events:none;
+
+    transform:translateY(-50%) translateX(0);
+
+    transition:
+        transform .55s cubic-bezier(.77,0,.175,1);
+}
+
+
+/* =========================================================
+   POSICIÓN HOME
+========================================================= */
+
+.floating-menu-track[data-active="home"]
+.floating-menu-active {
+    transform:
+        translateY(-50%)
+        translateX(0);
+}
+
+
+/* =========================================================
+   POSICIÓN PROJECTS
+========================================================= */
+
+.floating-menu-track[data-active="projects"]
+.floating-menu-active {
+    transform:
+        translateY(-50%)
+        translateX(125%);
+}
+
+
+/* =========================================================
+   POSICIÓN INFO
+========================================================= */
+
+.floating-menu-track[data-active="info"]
+.floating-menu-active {
+    transform:
+        translateY(-50%)
+        translateX(250%);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width:1100px) {
+
+    /* ---------------------------------------------
+       SCROLL
+    --------------------------------------------- */
+
+    .projects-scroll {
+        height:400vh;
+    }
+
+
+    /* ---------------------------------------------
+       CONTENEDOR
+    --------------------------------------------- */
+
+    .projects-sticky {
+        position:sticky;
+        top:16px;
+        width:calc(100% - 32px);
+        height:calc(90svh - 10px);
+        border-radius:14px;
+        overflow:hidden;
+    }
+
+
+    /* ---------------------------------------------
+       PROJECT
+    --------------------------------------------- */
+
+    .project {
+        display:flex;
+        flex-direction:column;
+        width:100%;
+        height:100%;
+        box-sizing:border-box;
+        border-radius:14px;
+        overflow:hidden;
+    }
+
+
+    /* ---------------------------------------------
+       LINK
+    --------------------------------------------- */
+
+    .project-link {
+        position:absolute;
+        inset:0;
+
+        width:100%;
+        height:100%;
+
+        display:block;
+
+        z-index:100;
+
+        color:inherit;
+        text-decoration:none;
+
+        cursor:pointer;
+        pointer-events:auto;
+    }
+
+
+    /* ---------------------------------------------
+       IMAGE
+    --------------------------------------------- */
+
+    .project-image {
+        width:100%;
+        height:50%;
+
+        flex:0 0 50%;
+
+        overflow:hidden;
+    }
+
+
+    /* ---------------------------------------------
+       INFO
+    --------------------------------------------- */
+
+    .project-info {
+        width:100%;
+        height:50%;
+
+        flex:0 0 50%;
+
+        padding:30px;
+
+        box-sizing:border-box;
+
+        overflow:hidden;
+    }
+
+
+    /* ---------------------------------------------
+       NUMBER
+    --------------------------------------------- */
+
+    .project-number {
+        font-size:12px;
+    }
+
+
+    /* ---------------------------------------------
+       TITLE
+    --------------------------------------------- */
+
+    .project-info h2 {
+        margin:auto 0 15px;
+
+        font-size:clamp(42px,11vw,65px);
+
+        line-height:.84;
+        letter-spacing:-.05em;
+    }
+
+
+    /* ---------------------------------------------
+       DESCRIPTION
+    --------------------------------------------- */
+
+    .project-info p {
+        max-width:200px;
+
+        font-size:13px;
+        line-height:1.15;
+    }
+
+
+    /* ---------------------------------------------
+       FLOATING MENU
+    --------------------------------------------- */
+
+    .floating-menu {
+        left:50%;
+        right:auto;
+
+        bottom:
+            calc(
+                20px +
+                env(safe-area-inset-bottom)
+            );
+
+        width:calc(100vw - 32px);
+
+        max-width:490px;
+
+        height:44px;
+
+        transform:translateX(-50%);
+    }
+
+
+    .floating-menu-item {
+        font-size:13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:380px) {
+
+    .floating-menu {
+        width:calc(100vw - 28px);
+        height:42px;
+    }
+
+    .floating-menu-item {
+        font-size:12px;
+    }
+}

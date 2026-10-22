@@ -1,0 +1,573 @@
+/* =====================================================
+   THE ZENSIVE — SHARED
+   Utilidades comunes a home, fichas de proyecto e info.
+   (projects.html no carga este archivo)
+===================================================== */
+
+:root {
+    --color-grey:#ECE1D3;
+    --color-red:#742931;
+    --color-black:#391B21;
+    --color-yellow:#886D23;
+    --color-blue:#96ACBD;
+    --ease-out:cubic-bezier(.16,1,.3,1);
+}
+
+
+/* =====================================================
+   ACCESIBILIDAD
+===================================================== */
+
+.sr-only {
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0 0 0 0);
+    white-space:nowrap;
+}
+
+.skip-link {
+    position:fixed;
+    left:12px;
+    top:-60px;
+    z-index:9999;
+    padding:10px 14px;
+    background:var(--color-red);
+    color:var(--color-grey);
+    text-decoration:none;
+}
+
+.skip-link:focus {
+    top:12px;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline:2px solid var(--color-red);
+    outline-offset:4px;
+}
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+.custom-cursor {
+    position:fixed;
+    left:0;
+    top:0;
+    width:14px;
+    height:14px;
+    border:1px solid var(--color-red);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    opacity:0;
+    transform:translate(-50%,-50%);
+    transition:width .25s ease,height .25s ease,background .25s ease,opacity .3s ease;
+}
+
+.custom-cursor.is-on {
+    opacity:1;
+}
+
+.custom-cursor.is-link {
+    width:46px;
+    height:46px;
+    background:rgba(116,41,49,.12);
+}
+
+@media (pointer:coarse) {
+    .custom-cursor {
+        display:none;
+    }
+}
+
+@media (pointer:fine) {
+    .has-custom-cursor,
+    .has-custom-cursor * {
+        cursor:none !important;
+    }
+}
+
+
+/* =====================================================
+   TEXTO — OPACIDAD LIGADA AL SCROLL
+   El texto está siempre visible. Cada palabra pasa de
+   opacidad baja a completa según avanza el scroll, y
+   vuelve a bajar al subir. Sin movimiento.
+===================================================== */
+
+.rv,
+.project-text.rv-host,
+.project-page.is-loaded .project-hero-intro p.rv,
+.project-hero-intro p.rv {
+    opacity:1 !important;
+    transform:none !important;
+    transition:none !important;
+}
+
+.project-text.rv-host {
+    opacity:1 !important;
+    transform:none !important;
+}
+
+.rv .w {
+    opacity:var(--rv-min,.22);
+}
+
+
+/* =====================================================
+   PARALLAX
+===================================================== */
+
+[data-parallax] {
+    scale:1.1;
+    will-change:translate;
+}
+
+.hero-image,
+.highlight-image,
+.creativity-image {
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   GALERÍA FINAL DEL PROYECTO — ZOOM AL PASAR EL RATÓN
+   (el grid y los tamaños siguen siendo los de interior.css)
+===================================================== */
+
+.gallery-project-image {
+    transition:transform 1.1s cubic-bezier(.16,1,.3,1);
+}
+
+@media (hover:hover) {
+
+    .gallery-project-item:hover .gallery-project-image {
+        transform:scale(1.06);
+    }
+}
+
+
+/* =====================================================
+   LISTA DE MARCAS (proyecto reto)
+   Rejilla pequeña y escalonada: número entre corchetes,
+   etiqueta subrayada, nombre y una línea de descripción.
+===================================================== */
+
+.brand-index {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-auto-rows:auto;
+    gap:56px 40px;
+    width:90%;
+    max-width:1100px;
+    margin:0 auto 150px;
+    padding:0;
+    list-style:none;
+    color:var(--color-black);
+}
+
+.brand-index li {
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    min-width:0;
+}
+
+/* colocación escalonada */
+.brand-index .bi-01 { grid-column:1; grid-row:1; }
+.brand-index .bi-02 { grid-column:1; grid-row:2; }
+.brand-index .bi-03 { grid-column:1; grid-row:3; }
+.brand-index .bi-04 { grid-column:2; grid-row:1; }
+.brand-index .bi-05 { grid-column:2; grid-row:2; }
+.brand-index .bi-06 { grid-column:3; grid-row:2; }
+.brand-index .bi-07 { grid-column:3; grid-row:3; }
+
+.brand-index .bi-num {
+    margin-bottom:14px;
+    font-size:13px;
+    letter-spacing:.08em;
+    white-space:pre;
+}
+
+.brand-index .bi-tag {
+    width:max-content;
+    font-size:13px;
+    text-transform:uppercase;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    text-decoration-thickness:1px;
+}
+
+.brand-index .bi-name {
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+}
+
+.brand-index .bi-desc {
+    max-width:260px;
+    margin-top:6px;
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-size:16px;
+    line-height:1.15;
+    opacity:.8;
+}
+
+@media (max-width:700px) {
+
+    .brand-index {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:36px 20px;
+        margin-bottom:100px;
+    }
+
+    .brand-index li {
+        grid-column:auto !important;
+        grid-row:auto !important;
+    }
+
+    .brand-index .bi-tag,
+    .brand-index .bi-name,
+    .brand-index .bi-num {
+        font-size:12px;
+    }
+
+    .brand-index .bi-desc {
+        font-size:15px;
+    }
+}
+
+
+/* =====================================================
+   ANTERIOR / SIGUIENTE PROYECTO
+===================================================== */
+
+.project-pager {
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    width:100%;
+    margin-top:160px;
+    padding:28px 30px 150px;
+    border-top:1px solid var(--color-black);
+    color:var(--color-black);
+}
+
+.pager-link {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    max-width:48%;
+    color:inherit;
+    text-decoration:none;
+    cursor:pointer;
+}
+
+.pager-next {
+    align-items:flex-end;
+    text-align:right;
+}
+
+.pager-label {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:13px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+}
+
+.pager-count {
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-size:17px;
+    text-transform:none;
+    opacity:.6;
+}
+
+.pager-arrow {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:34px;
+    height:34px;
+    border:1px solid currentColor;
+    border-radius:50%;
+    font-size:15px;
+    line-height:1;
+    padding-bottom:2px;
+    transition:background .35s ease,color .35s ease,transform .5s var(--ease-out);
+}
+
+.pager-name {
+    position:relative;
+    z-index:2;
+    display:block;
+    font-size:clamp(26px,3.4vw,56px);
+    font-weight:300;
+    line-height:.95;
+    white-space:nowrap;
+    letter-spacing:-.05em;
+    text-transform:uppercase;
+    color:var(--color-red);
+    transition:color .35s ease;
+}
+
+.pager-sub {
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-size:clamp(16px,1.4vw,20px);
+}
+
+.pager-thumb {
+    position:absolute;
+    bottom:calc(100% + 18px);
+    left:0;
+    width:clamp(150px,16vw,240px);
+    aspect-ratio:4 / 5;
+    margin:0;
+    overflow:hidden;
+    border-radius:12px;
+    opacity:0;
+    pointer-events:none;
+    transform:translateY(24px) rotate(-5deg) scale(.82);
+    transform-origin:bottom left;
+    transition:opacity .45s ease,transform .7s var(--ease-out);
+}
+
+.pager-next .pager-thumb {
+    left:auto;
+    right:0;
+    transform:translateY(24px) rotate(5deg) scale(.82);
+    transform-origin:bottom right;
+}
+
+.pager-thumb img {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.pager-link::after {
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-10px;
+    width:100%;
+    height:1px;
+    background:currentColor;
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .7s var(--ease-out);
+}
+
+.pager-next::after {
+    transform-origin:right;
+}
+
+.pager-link:hover::after,
+.pager-link:focus-visible::after {
+    transform:scaleX(1);
+}
+
+.pager-link:hover .pager-thumb,
+.pager-link:focus-visible .pager-thumb {
+    opacity:1;
+    transform:translateY(0) rotate(-3deg) scale(1);
+}
+
+.pager-next:hover .pager-thumb,
+.pager-next:focus-visible .pager-thumb {
+    transform:translateY(0) rotate(3deg) scale(1);
+}
+
+.pager-link:hover .pager-name {
+    color:var(--pager-color,var(--color-black));
+}
+
+.pager-link:hover .pager-arrow {
+    background:var(--color-black);
+    color:var(--color-grey);
+}
+
+.pager-prev:hover .pager-arrow {
+    transform:translateX(-4px);
+}
+
+.pager-next:hover .pager-arrow {
+    transform:translateX(4px);
+}
+
+@media (max-width:700px) {
+
+    .project-pager {
+        margin-top:100px;
+        padding:22px 16px 120px;
+        gap:16px;
+    }
+
+    .pager-name {
+        font-size:clamp(17px,5.2vw,26px);
+    }
+
+    .pager-label {
+        font-size:11px;
+        gap:6px;
+    }
+
+    .pager-arrow {
+        width:26px;
+        height:26px;
+        font-size:12px;
+    }
+
+    .pager-thumb {
+        display:none;
+    }
+}
+
+
+/* =====================================================
+   ETIQUETAS DE SECCIÓN (comunes a toda la web)
+===================================================== */
+
+.section-label {
+    margin:0;
+    font-family:neue-haas-grotesk-display,sans-serif;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:.02em;
+    line-height:1.2;
+    text-transform:uppercase;
+}
+
+
+
+/* =====================================================
+   HOME — RETOQUES PARA COMPARTIR EL AIRE DE INFO
+   Pesos más ligeros, la serif en las frases que piden
+   pausa y etiquetas numeradas en cada sección.
+===================================================== */
+
+body.home .highlight-text .section-label {
+    margin:25px 0 0 15px;
+    color:var(--color-grey);
+    opacity:.8;
+}
+
+body.home .highlight-text .title {
+    margin-top:14px;
+    font-weight:300;
+    letter-spacing:-.04em;
+    line-height:.95;
+}
+
+body.home .highlight-text .subtitle {
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(34px,3.2vw,52px);
+    line-height:1;
+    letter-spacing:-.01em;
+}
+
+body.home .highlight-text .description {
+    max-width:560px;
+    font-weight:400;
+    letter-spacing:-.015em;
+}
+
+@media (min-width:701px) {
+
+    /* El texto deja de pegarse al borde inferior del bloque */
+
+    body.home .highlight-text .description {
+        margin-top:auto;
+        margin-bottom:90px;
+    }
+}
+
+body.home .home-gallery-heading {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+body.home .home-gallery-header h2 {
+    font-weight:300;
+    letter-spacing:-.04em;
+}
+
+body.home .home-gallery-header .section-label {
+    color:var(--color-black);
+}
+
+body.home .home-gallery-description p {
+    font-weight:400;
+    letter-spacing:-.01em;
+}
+
+body.home .creativity-label {
+    align-self:flex-start;
+    margin:-60px 0 60px;
+    color:var(--color-grey);
+}
+
+body.home .creativity-text p {
+    font-size:clamp(30px,3.6vw,54px);
+    font-weight:300;
+    line-height:1.35;
+    letter-spacing:-.035em;
+}
+
+body.home .creativity-image img {
+    border-radius:16px;
+}
+
+body.home .creativity-caption {
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(28px,3vw,46px);
+    line-height:1;
+    letter-spacing:-.01em;
+    text-transform:none;
+}
+
+@media (max-width:700px) {
+
+    body.home .creativity-label {
+        margin:-40px 0 36px;
+    }
+
+    body.home .highlight-text .subtitle {
+        font-size:clamp(26px,7vw,34px);
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion:reduce) {
+
+    [data-parallax] {
+        scale:1;
+        translate:none !important;
+    }
+
+    .rv .w {
+        opacity:1 !important;
+    }
+}

@@ -1,0 +1,265 @@
+/* =====================================================
+   THE ZENSIVE — PROJECTS / VISTA GALLERY
+   Archivo aparte: no modifica projects.css ni el menú.
+===================================================== */
+
+
+/* =====================================================
+   MENÚ FLOTANTE — mismo peso que en el resto de páginas
+   (projects.css lo tenía en 200; home e interior en 400)
+===================================================== */
+
+.floating-menu-item {
+    font-weight:400;
+}
+
+
+/* =====================================================
+   BOTÓN LIST / GALLERY
+   Misma altura, línea base y radio que el menú flotante.
+   mix-blend-mode: difference → el botón se invierte
+   según lo que tenga detrás y siempre se lee.
+===================================================== */
+
+.view-toggle {
+    position:fixed;
+    right:30px;
+    bottom:40px;
+    z-index:5001;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    box-sizing:border-box;
+    width:200px;
+    height:40px;
+    margin:0;
+    padding:0;
+    border:1px solid #fff;
+
+    background-color:transparent;
+    border-radius:10px;
+    overflow:hidden;
+    mix-blend-mode:difference;
+}
+
+.view-toggle button {
+    -webkit-appearance:none;
+            appearance:none;
+    position:relative;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:none;
+    box-shadow:none;
+    color:#fff;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:400;
+    line-height:1;
+    letter-spacing:normal;
+    cursor:pointer;
+    transition:color .35s ease;
+}
+
+.view-toggle button[aria-pressed="true"] {
+    color:#000;
+}
+
+.view-toggle-pill {
+    position:absolute;
+    top:50%;
+    left:6px;
+    z-index:2;
+    width:calc(50% - 12px);
+    height:70%;
+    background-color:#fff;
+    border-radius:6px;
+    pointer-events:none;
+    transform:translateY(-50%) translateX(0);
+    transition:transform .55s cubic-bezier(.77,0,.175,1);
+}
+
+.view-toggle[data-view="gallery"] .view-toggle-pill {
+    transform:translateY(-50%) translateX(calc(100% + 12px));
+}
+
+
+/* Entre 883 y 1100 px el menú baja a 20px y mide 44px:
+   el botón le acompaña en la misma línea. */
+
+@media (max-width:1100px) {
+
+    .view-toggle {
+        right:16px;
+        bottom:calc(20px + env(safe-area-inset-bottom));
+        width:180px;
+        height:44px;
+    }
+
+    .view-toggle button {
+        font-size:13px;
+    }
+}
+
+
+/* Móvil (hasta 882 px): sin vista gallery.
+   Se ve solo la lista de proyectos, como antes. */
+
+@media (max-width:882px) {
+
+    .view-toggle,
+    .z-gallery {
+        display:none !important;
+    }
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+body.is-gallery {
+    overflow:hidden;
+}
+
+.z-gallery {
+    position:fixed;
+    inset:0;
+    z-index:4000;
+    overflow:hidden;
+    background:var(--color-grey);
+    perspective:1000px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .6s ease,visibility 0s linear .6s;
+    touch-action:none;
+}
+
+body.is-gallery .z-gallery {
+    opacity:1;
+    visibility:visible;
+    transition:opacity .6s ease,visibility 0s;
+}
+
+.z-stage {
+    position:absolute;
+    inset:0;
+    z-index:1;
+    transform-style:preserve-3d;
+    pointer-events:none;     /* el clic pasa a las imágenes */
+}
+
+.z-card {
+    position:absolute;
+    top:50%;
+    left:50%;
+    display:block;
+    border-radius:6px;
+    overflow:visible;
+    opacity:0;
+    will-change:transform,opacity;
+    cursor:pointer;
+}
+
+.z-card img {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:6px;
+    transition:filter .3s ease;
+}
+
+.z-label {
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-size:15px;
+    line-height:1;
+    white-space:nowrap;
+    color:var(--color-black);
+    opacity:0;
+    transition:opacity .3s ease;
+}
+
+.z-card:hover .z-label,
+.z-card:focus-visible .z-label {
+    opacity:1;
+}
+
+.z-gallery-title {
+    position:absolute;
+    top:50%;
+    left:50%;
+    z-index:5;
+    margin:0;
+    width:min(720px,80vw);
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    text-align:center;
+    font-family:neue-haas-grotesk-display,sans-serif;
+    font-size:clamp(34px,4.6vw,72px);
+    font-weight:300;
+    line-height:.92;
+    letter-spacing:-.045em;
+    color:var(--color-red);
+}
+
+.z-gallery-title em {
+    display:block;
+    margin-top:18px;
+    font-family:"Instrument Serif",serif;
+    font-size:clamp(16px,1.4vw,20px);
+    letter-spacing:0;
+    color:var(--color-black);
+}
+
+.z-gallery-hint {
+    position:absolute;
+    left:30px;
+    bottom:50px;
+    margin:0;
+    font-family:neue-haas-grotesk-display,sans-serif;
+    font-size:13px;
+    text-transform:uppercase;
+    color:var(--color-black);
+}
+
+
+/* =====================================================
+   MÓVIL
+===================================================== */
+
+@media (max-width:1100px) {
+
+    .z-gallery-hint {
+        display:none;
+    }
+
+    .z-label {
+        display:none;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion:reduce) {
+
+    .view-toggle-pill,
+    .z-gallery {
+        transition:none;
+    }
+}

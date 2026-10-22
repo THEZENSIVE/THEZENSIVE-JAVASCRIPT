@@ -1,0 +1,1124 @@
+/* =========================================================
+   THE ZENSIVE — HOME
+   ========================================================= */
+
+   :root {
+    --color-grey:#ECE1D3;
+    --color-red:#742931;
+    --color-black:#391B21;
+    --color-yellow:#886D23;
+    --color-blue:#96ACBD;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing:border-box;
+}
+
+html,
+body {
+    margin:0;
+    padding:0;
+    width:100%;
+    min-height:100%;
+}
+
+body {
+    background:var(--color-grey);
+    color:var(--color-black);
+    font-family:neue-haas-grotesk-display,sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.home-hero {
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   TÍTULO HERO
+========================================================= */
+
+.hero-title {
+    position:relative;
+    z-index:5;
+    width:calc(100% - 60px);
+    margin:0 20px;
+    padding-top:20px;
+    font-family:neue-haas-grotesk-display,sans-serif;
+    font-size:82pt;
+    font-weight:300;
+    line-height:.9;
+    letter-spacing:-.045em;
+    color:var(--color-red);
+    text-align:justify;
+    text-align-last:justify;
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   IMÁGENES HERO
+========================================================= */
+
+.hero-image {
+    position:absolute;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.hero-image img {
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+
+/* =========================================================
+   IMAGEN 01 — IZQUIERDA
+========================================================= */
+
+.hero-image-left {
+    left:30px;
+    top:300px;
+    width:280px;
+    height:360px;
+}
+
+
+/* =========================================================
+   IMAGEN 02 — CENTRO
+========================================================= */
+
+.hero-image-center {
+    left:840px;
+    top:-50px;
+    width:260px;
+    height:330px;
+}
+
+.hero-image-center img {
+    width:260px;
+    height:330px;
+    object-fit:cover;
+    object-position:bottom;
+}
+
+
+/* =========================================================
+   IMAGEN 03 — DERECHA
+========================================================= */
+
+.hero-image-right {
+    left:1150px;
+    top:500px;
+    width:260px;
+    height:350px;
+}
+
+
+/* =========================================================
+   TEXTOS LATERALES HERO
+========================================================= */
+
+.hero-side-text {
+    position:absolute;
+    z-index:6;
+    margin:0;
+    color:var(--color-red);
+    font-family:neue-haas-grotesk-display,sans-serif;
+    font-size:15px;
+    font-weight:400;
+    line-height:1.05;
+    letter-spacing:-.02em;
+    opacity:1;
+}
+
+
+/* ---------- TEXTO IZQUIERDO ---------- */
+
+.hero-side-text-left {
+    left:40px;
+    top:520px;
+    width:70px;
+    text-align:left;
+    color: white;
+    mix-blend-mode: difference;
+}
+
+
+/* ---------- TEXTO DERECHO ---------- */
+
+.hero-side-text-right {
+    right:30px;
+    top:400px;
+    width:100px;
+    text-align:right;
+}
+
+
+/* =========================================================
+   MENÚ FLOTANTE
+========================================================= */
+
+.floating-menu {
+    position:fixed;
+    left:50%;
+    bottom:40px;
+    transform:translateX(-50%);
+    width:490px;
+    height:40px;
+    z-index:5000;
+}
+
+
+/* =========================================================
+   CONTENEDOR MENÚ
+========================================================= */
+
+.floating-menu-track {
+    position:relative;
+    width:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    align-items:center;
+    background-color:var(--color-blue);
+    border-radius:10px;
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   OPCIONES MENÚ
+========================================================= */
+
+.floating-menu-item {
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--color-grey);
+    text-decoration:none;
+    font-size:14px;
+    font-weight:400;
+    z-index:3;
+    transition:color .35s ease;
+}
+
+.floating-menu-item.active {
+    color:var(--color-blue);
+}
+
+
+/* =========================================================
+   PÍLDORA ACTIVA
+========================================================= */
+
+.floating-menu-active {
+    position:absolute;
+    top:50%;
+    left:18px;
+    width:26.666666%;
+    height:70%;
+    background-color:var(--color-grey);
+    border-radius:6px;
+    z-index:2;
+    pointer-events:none;
+    transform:translateY(-50%) translateX(0);
+    transition:transform .55s cubic-bezier(.77,0,.175,1);
+}
+
+
+/* ---------- POSICIÓN PROJECTS ---------- */
+
+.floating-menu-track[data-active="projects"]
+.floating-menu-active {
+    transform:translateY(-50%) translateX(125%);
+}
+
+
+/* ---------- POSICIÓN INFO ---------- */
+
+.floating-menu-track[data-active="info"]
+.floating-menu-active {
+    transform:translateY(-50%) translateX(250%);
+}
+
+
+/* =========================================================
+   PROJECTS / ASSETS
+========================================================= */
+
+.gallery-btn {
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    width:calc(100% - 60px);
+    margin:30px 30px 0;
+    color:var(--color-red);
+    text-decoration:none;
+    font-family:neue-haas-grotesk-display,sans-serif;
+    font-size:40px;
+    font-weight:500;
+    line-height:1;
+    transition:color .3s ease;
+}
+
+.gallery-btn .arrow {
+    display:inline-block;
+    margin-right:4px;
+    transition:transform .3s ease,color .3s ease;
+}
+
+.gallery-btn .assets {
+    font-family:"Instrument Serif",serif;
+    font-style:italic;
+    font-weight:400;
+    letter-spacing:-.04em;
+}
+
+
+/* ---------- HOVER ---------- */
+
+.gallery-btn:hover {
+    color:var(--color-blue);
+}
+
+.gallery-btn:hover .arrow {
+    color:var(--color-blue);
+    transform:translateX(5px);
+}
+
+
+/* =========================================================
+   FILOSOFÍA
+========================================================= */
+
+.highlight-block {
+    width:calc(100vw - 50px);
+    height:850px;
+    margin:50px 0 50px 50px;
+    display:flex;
+    align-items:stretch;
+    border-radius:20px 0 0 20px;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.highlight-block.animate {
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   FILOSOFÍA — BLOQUE DE TEXTO
+========================================================= */
+
+.highlight-text {
+    width:57%;
+    height:850px;
+    box-sizing:border-box;
+    background-color:#886D23;
+    color:var(--color-grey);
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+}
+
+
+/* ---------- TÍTULO ---------- */
+
+.highlight-text .title {
+    margin-top:40px;
+    margin-left:15px;
+    font-size:3rem;
+    font-weight:500;
+}
+
+
+/* ---------- SUBTÍTULO ---------- */
+
+.highlight-text .subtitle {
+    margin-top:180px;
+    margin-left:15px;
+    font-size:2rem;
+    font-weight:400;
+}
+
+
+/* ---------- DESCRIPCIÓN ---------- */
+
+.highlight-text .description {
+    margin-top:280px;
+    margin-left:15px;
+    font-size:1.2rem;
+    font-weight:300;
+    line-height:1.2;
+}
+
+
+/* =========================================================
+   FILOSOFÍA — IMAGEN
+========================================================= */
+
+.highlight-image {
+    width:43%;
+    height:850px;
+    overflow:hidden;
+}
+
+.highlight-image img {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+
+/* =========================================================
+   GALERÍA HOME
+========================================================= */
+
+.home-gallery {
+    width:100%;
+    overflow:hidden;
+    margin:100px 0 150px;
+}
+
+
+/* =========================================================
+   GALERÍA — CABECERA
+========================================================= */
+
+.home-gallery-header {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    padding:0 20px 20px;
+}
+
+.home-gallery-header h2 {
+    margin:0;
+    font-size:2rem;
+    font-weight:500;
+    line-height:1;
+    color:var(--color-blue);
+}
+
+
+/* =========================================================
+   GALERÍA — BOTÓN
+========================================================= */
+
+.home-gallery-link {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--color-blue);
+    text-decoration:none;
+    font-size:1rem;
+    font-weight:500;
+    transition:gap .3s ease;
+}
+
+.home-gallery-link span {
+    font-size:1.5rem;
+    line-height:0;
+}
+
+.home-gallery-link:hover {
+    gap:18px;
+}
+
+
+/* =========================================================
+   GALERÍA — TRACK
+========================================================= */
+
+.home-gallery-track {
+    display:flex;
+    width:max-content;
+    transform:translate3d(0,0,0);
+    will-change:transform;
+}
+
+
+/* =========================================================
+   GALERÍA — IMÁGENES
+========================================================= */
+
+.home-gallery-item {
+    flex:0 0 auto;
+    width:300px;
+    height:400px;
+    overflow:hidden;
+    transition:width .4s ease,height .4s ease,transform .4s ease;
+}
+
+.home-gallery-item img {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transform:scale(1.08);
+    transition:transform .4s ease;
+}
+
+
+/* ---------- HOVER ---------- */
+
+.home-gallery-item:hover {
+    width:360px;
+    height:480px;
+}
+
+
+/* ---------- PARALLAX ---------- */
+
+.home-gallery-item:hover img {
+    transform:scale(1.08);
+}
+
+
+/* =========================================================
+   GALERÍA — DESCRIPCIÓN
+========================================================= */
+
+.home-gallery-description {
+    padding:30px 20px 0;
+}
+
+.home-gallery-description p {
+    margin:0;
+    font-size:1.2rem;
+    font-weight:400;
+    line-height:1.25;
+    color:var(--color-blue);
+}
+
+
+/* =========================================================
+   BLOQUE CREATIVIDAD
+========================================================= */
+
+.creativity-block {
+    width:100%;
+    margin:150px 0 0;
+    padding:100px 50px 80px;
+    box-sizing:border-box;
+    background-color:var(--color-red);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+
+/* =========================================================
+   CREATIVIDAD — TEXTO PRINCIPAL
+========================================================= */
+
+.creativity-text {
+    width:100%;
+    max-width:1300px;
+    text-align:center;
+}
+
+.creativity-text p {
+    margin:0;
+    font-size:50pt;
+    font-weight:600;
+    line-height:1.4;
+    text-transform:uppercase;
+    color:var(--color-black);
+    background:var(--color-grey);
+    display:inline;
+    box-decoration-break:clone;
+    -webkit-box-decoration-break:clone;
+    padding:1px 25px;
+}
+
+
+/* =========================================================
+   CREATIVIDAD — IMAGEN
+========================================================= */
+
+.creativity-image {
+    width:700px;
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.creativity-image img {
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+
+/* =========================================================
+   CREATIVIDAD — TEXTO INFERIOR
+========================================================= */
+
+.creativity-caption {
+    margin:50px 0 20px;
+    color:var(--color-grey);
+    font-size:3rem;
+    font-weight:600;
+    line-height:1.2;
+    text-transform:uppercase;
+    text-align:center;
+}
+
+
+/* =========================================================
+   TABLET
+   1100px
+========================================================= */
+
+@media (max-width:1100px) {
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero-title {
+        font-size:clamp(58px,10vw,96px);
+        white-space:normal;
+    }
+
+    .hero-image-left {
+        width:280px;
+        height:380px;
+    }
+
+    .hero-image-center {
+        left:50%;
+    }
+
+    .hero-image-right {
+        left:auto;
+        right:30px;
+        top:520px;
+    }
+
+    .hero-side-text-left {
+        top:470px;
+    }
+
+    .hero-side-text-right {
+        top:460px;
+    }
+
+
+    /* =====================================================
+       MENÚ
+    ===================================================== */
+
+    .floating-menu {
+        width:calc(100vw - 48px);
+        max-width:490px;
+        bottom:30px;
+    }
+
+
+    /* =====================================================
+       FILOSOFÍA
+    ===================================================== */
+
+    .highlight-block {
+        width:calc(100vw - 30px);
+        height:700px;
+        margin:40px 0 40px 30px;
+    }
+
+    .highlight-text {
+        width:57%;
+        height:700px;
+        padding:15px;
+    }
+
+    .highlight-image {
+        width:43%;
+        height:700px;
+    }
+
+    .highlight-text .title {
+        margin-top:30px;
+        margin-left:10px;
+        font-size:2.5rem;
+    }
+
+    .highlight-text .subtitle {
+        margin-top:120px;
+        margin-left:10px;
+        font-size:1.7rem;
+    }
+
+    .highlight-text .description {
+        margin-top:180px;
+        margin-left:10px;
+        font-size:1rem;
+    }
+
+
+    /* =====================================================
+       GALERÍA
+    ===================================================== */
+
+    .home-gallery {
+        margin:80px 0 120px;
+    }
+
+    .home-gallery-header {
+        padding:0 20px 20px;
+    }
+
+    .home-gallery-header h2 {
+        font-size:1.8rem;
+    }
+
+    .home-gallery-link {
+        font-size:.9rem;
+    }
+
+    .home-gallery-description {
+        padding:25px 20px 0;
+    }
+
+    .home-gallery-description p {
+        font-size:1.1rem;
+    }
+
+
+    /* =====================================================
+       CREATIVIDAD
+    ===================================================== */
+
+    .creativity-block {
+        margin-top:120px;
+        padding:80px 30px 70px;
+    }
+
+    .creativity-text {
+        max-width:950px;
+    }
+
+    .creativity-text p {
+        font-size:clamp(38px,5vw,50pt);
+        line-height:1.25;
+        padding:1px 20px;
+    }
+
+    .creativity-image {
+        width:min(700px,75vw);
+        margin-top:50px;
+    }
+
+    .creativity-caption {
+        margin-top:40px;
+        font-size:2.3rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   700px
+========================================================= */
+
+@media (max-width:700px) {
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .home-hero {
+        min-height:100svh;
+        padding-bottom:80px;
+    }
+
+    .hero-title {
+        width:calc(100% - 32px);
+        margin:0 16px;
+        padding-top:20px;
+        font-size:clamp(42px,12vw,64px);
+        line-height:.9;
+        letter-spacing:-.04em;
+        white-space:normal;
+        text-align:left;
+        text-align-last:left;
+    }
+
+    .hero-image {
+        position:absolute;
+        border-radius: 5px;
+    }
+
+    .hero-image-left {
+        left:16px;
+        top:280px;
+        width:42vw;
+        height:48vw;
+        max-width:190px;
+        max-height:230px;
+    }
+
+    .hero-image-center {
+        left:340px;
+        right:16px;
+        width:30vw;
+        height:38vw;
+        max-width:145px;
+        max-height:185px;
+    }
+
+    .hero-image-center img {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:bottom;
+    }
+
+    .hero-image-right {
+        left:auto;
+        right:16px;
+        top:570px;
+        width:34vw;
+        height:43vw;
+        max-width:155px;
+        max-height:200px;
+    }
+
+    .hero-side-text {
+        font-size:16px;
+    }
+
+    .hero-side-text-left {
+        left:16px;
+        top:600px;
+        width:45vw;
+        max-width:110px;
+        color: #391B21;
+        mix-blend-mode: none;
+    }
+
+    .hero-side-text-right {
+        right:16px;
+        top:400px;
+        width:45vw;
+        max-width:110px;
+    }
+
+
+    /* =====================================================
+       MENÚ
+    ===================================================== */
+
+    .floating-menu {
+        position:fixed;
+        left:50%;
+        right:auto;
+        bottom:calc(20px + env(safe-area-inset-bottom));
+        width:calc(100vw - 32px);
+        max-width:490px;
+        height:44px;
+        transform:translateX(-50%);
+    }
+
+    .floating-menu-item {
+        font-size:13px;
+    }
+
+
+    /* =====================================================
+       PROJECTS / ASSETS
+    ===================================================== */
+
+    .gallery-btn {
+        width:calc(100% - 32px);
+        margin:25px 16px 0;
+        font-size:28px;
+    }
+
+
+   /* =====================================================
+   FILOSOFÍA
+===================================================== */
+
+.highlight-block {
+    width: calc(100vw - 32px);
+    height: auto;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.highlight-text {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.highlight-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 0.7;
+    border-radius: 0 0 16px 16px;
+}
+
+.highlight-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.highlight-text .title {
+    margin: 20px 0 0;
+    font-size: clamp(1.4rem, 7vw, 2rem);
+    line-height: 1.1;
+}
+
+.highlight-text .subtitle {
+    margin: 35px 0 40px;
+    font-size: clamp(1.2rem, 5vw, 1.4rem);
+    line-height: 1.2;
+}
+
+.highlight-text .description {
+    margin: 40px 0 0;
+    font-size: clamp(.9rem, 3.1vw, 1.1rem);
+    line-height: 1.4;
+}
+
+
+    /* =====================================================
+       GALERÍA HOME
+    ===================================================== */
+
+    .home-gallery {
+        margin:70px 0 90px;
+    }
+
+    .home-gallery-header {
+        padding:0 16px 20px;
+        align-items:flex-end;
+    }
+
+    .home-gallery-header h2 {
+        font-size:1.5rem;
+    }
+
+    .home-gallery-link {
+        gap:7px;
+        font-size:.75rem;
+        text-align:right;
+    }
+
+    .home-gallery-link span {
+        font-size:1.2rem;
+    }
+
+    .home-gallery-link:hover {
+        gap:10px;
+    }
+
+    .home-gallery-item {
+        width:220px;
+        height:300px;
+    }
+
+    .home-gallery-item:hover {
+        width:220px;
+        height:300px;
+    }
+
+    .home-gallery-description {
+        padding:25px 16px 0;
+    }
+
+    .home-gallery-description p {
+        font-size:1rem;
+        line-height:1.2;
+    }
+
+
+    /* =====================================================
+       CREATIVIDAD
+    ===================================================== */
+
+    .creativity-block {
+        margin-top:90px;
+        padding:60px 16px 50px;
+    }
+
+    .creativity-text {
+        width:100%;
+        max-width:none;
+    }
+
+    .creativity-text p {
+        font-size:clamp(28px,8vw,42px);
+        font-weight:600;
+        line-height:1.15;
+        padding:1px 12px;
+    }
+
+    .creativity-image {
+        width:100%;
+        max-width:500px;
+        margin-top:50px;
+    }
+
+    .creativity-caption {
+        margin:35px 0 10px;
+        font-size:clamp(1.5rem,6vw,2.3rem);
+        line-height:1.1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE PEQUEÑO
+   380px
+========================================================= */
+
+@media (max-width:380px) {
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero-title {
+        font-size:40px;
+    }
+
+    .hero-image-left {
+        width:52vw;
+        height:58vw;
+        max-width:220px;
+        max-height:250px;
+    }
+
+    .hero-image-center {
+        width:36vw;
+        height:46vw;
+        max-width:160px;
+        max-height:210px;
+    }
+
+    .hero-image-right {
+        width:40vw;
+        height:50vw;
+        max-width:170px;
+        max-height:220px;
+    }
+
+    .hero-side-text-left {
+        top:540px;
+        color: #391B21;
+    }
+
+    .hero-side-text-right {
+        top:830px;
+    }
+
+
+    /* =====================================================
+       FILOSOFÍA
+    ===================================================== */
+
+    .highlight-text {
+        height:calc((100vw - 32px) * .85);
+        min-height:0;
+    }
+
+    .highlight-text .title {
+        font-size:1.8rem;
+    }
+
+    .highlight-text .subtitle {
+        margin-top:55px;
+        font-size:1.3rem;
+    }
+
+    .highlight-text .description {
+        margin-top:60px;
+        font-size:.4rem;
+    }
+
+    .highlight-image {
+        height:calc((100vw - 32px) * .85);
+    }
+
+
+    /* =====================================================
+       GALERÍA
+    ===================================================== */
+
+    .home-gallery-header h2 {
+        font-size:1.3rem;
+    }
+
+    .home-gallery-link {
+        font-size:.68rem;
+    }
+
+    .home-gallery-item {
+        width:190px;
+        height:260px;
+    }
+
+    .home-gallery-item:hover {
+        width:190px;
+        height:260px;
+    }
+
+
+    /* =====================================================
+       CREATIVIDAD
+    ===================================================== */
+
+    .creativity-block {
+        padding:50px 12px 40px;
+    }
+
+    .creativity-text p {
+        font-size:27px;
+        line-height:1.15;
+        padding:1px 8px;
+    }
+
+    .creativity-image {
+        margin-top:40px;
+    }
+
+    .creativity-caption {
+        font-size:1.4rem;
+    }
+}
