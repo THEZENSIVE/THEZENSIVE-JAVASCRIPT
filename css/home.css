@@ -282,10 +282,10 @@ body {
 
 .gallery-btn .arrow {
     display:inline-block;
-    width:.8em;
-    height:.8em;
-    margin-right:4px;
-    vertical-align:baseline;
+    flex:none;
+    width:.72em;
+    height:.72em;
+    margin-right:.28em;
     transition:transform .3s ease,color .3s ease;
 }
 .gallery-btn .arrow svg {
